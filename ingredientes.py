@@ -105,6 +105,7 @@ def __existe_nombre_ingrediente(ingredientes: dict, nombre_ingrediente: str) -> 
   #Si nombre_ingrediente no existe se retorna False
   return False
 
+
 def __existe_alias(ingredientes: dict, alias: str) -> bool:
   # definición de __doc__
   """
@@ -116,6 +117,7 @@ def __existe_alias(ingredientes: dict, alias: str) -> bool:
     Retorna: True si el alias del ingrediente ya existe o False si el alias del ingrediente no existe
   """
   return alias in ingredientes.keys()
+
 
 def __validar_alias(ingredientes: dict) -> str : 
 
@@ -138,6 +140,7 @@ def __validar_alias(ingredientes: dict) -> str :
   print()
   #se retorna el alias validado
   return alias
+
 
 def __validar_nombre_ingrediente(ingredientes: dict) -> str:
 
@@ -162,6 +165,7 @@ def __validar_nombre_ingrediente(ingredientes: dict) -> str:
   print()
   #se retorna el nombre del ingrediente validado
   return nombre_ingrediente
+
 
 def __validar_precio() -> float:
 
@@ -188,6 +192,7 @@ def __validar_precio() -> float:
   #se retorna un precio válido
   return precio
 
+
 def __terminar_operacion() -> str:
 
   # definición de __doc__
@@ -206,6 +211,7 @@ def __terminar_operacion() -> str:
 
   #se retorna la opción válida (s/n)
   return salir
+
 
 def __ingrediente_eliminado(ingredientes: dict, alias: str) -> bool:
 
@@ -238,6 +244,7 @@ def __ingrediente_eliminado(ingredientes: dict, alias: str) -> bool:
   #se retorna el diccionario de ingredientes modificado
   return ingredientes
 
+
 def __imprimir_ingrediente_agregado(alias: str, nombre_ingrediente: str, precio: float) -> None:
 
     # definición de __doc__
@@ -257,6 +264,7 @@ def __imprimir_ingrediente_agregado(alias: str, nombre_ingrediente: str, precio:
     print(f"Nombre --> {nombre_ingrediente}")
     print(f"Precio --> {precio}")
     print("-" * CANTIDAD_DE_RELLENO)
+
 
 def __imprimir_ingrediente_eliminado() -> None:
 
