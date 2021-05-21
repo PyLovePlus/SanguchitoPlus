@@ -175,8 +175,14 @@ def __validar_precio() -> float:
     el precio del ingrediente debe ser mayor a 0.00.
     Retorna: el precio del ingrediente validado
   """
-  #se le pide un precio para el ingrediente al usuario
-  precio: float = float(input(("Ingresa un precio para el ingrediente: ")))
+  #se le pide un precio para el ingrediente al usuario, validando que sea un float
+  precio: float = 0
+  while(precio == 0):
+    try:
+      precio: float = float(input(("Ingresa un precio para el ingrediente: ")))
+    except:
+      print("Error: El precio debe ser un número.")
+      precio = 0
 
   #mientras el precio del ingrediente no sea válido, es decir, no sea mayor a 0.00
   #se le pide al usuario otro precio válido
