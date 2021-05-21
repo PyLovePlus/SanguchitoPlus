@@ -19,7 +19,7 @@ def agregar_ingredientes(ingredientes: dict) -> dict:
   """
 
   salir: str = "n"
-  nombre_ingrediente: String = ""
+  nombre_ingrediente: str = ""
   precio: float = 0
   alias: str = ""
 
