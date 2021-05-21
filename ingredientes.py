@@ -72,7 +72,7 @@ def eliminar_ingredientes(ingredientes: dict) -> dict:
     print("*" * CANTIDAD_DE_RELLENO)
     alias = input("Ingrese alias del ingrediente a eliminar: ")
 
-    #se elimina el ingrediente dek diccionario de ingredientes en caso de que exista
+    #se elimina el ingrediente del diccionario de ingredientes en caso de que exista
     ingredientes = __ingrediente_eliminado(ingredientes, alias)
 
     #se le pregunta al usuario si desea terminar de eliminar ingredientes
@@ -217,7 +217,7 @@ def __ingrediente_eliminado(ingredientes: dict, alias: str) -> bool:
 
   # definición de __doc__
   """
-    Función encargada de eliminar el ingrediente si existe el alais del ingrediente,
+    Función encargada de eliminar el ingrediente si existe el alias del ingrediente,
     retorna el diccionario de ingredientes sin el ingrediente eliminado (en caso de que exista)
     si no existe el ingrediente a eliminar se retorna el diccionario de ingredientes sin modificar.
     Argumentos:
@@ -257,7 +257,7 @@ def __imprimir_ingrediente_agregado(alias: str, nombre_ingrediente: str, precio:
         precio: precio del nuevo ingrediente
     """
 
-    #Se imprime la informacion (alias, nombre_ingrediente y precio) del nuevo ingrediente agregado
+    #Se imprime la información (alias, nombre_ingrediente y precio) del nuevo ingrediente agregado
     print("-" * CANTIDAD_DE_RELLENO)
     print("Ingrediente agregado exitosamente: ")
     print(f"Alias --> {alias}")

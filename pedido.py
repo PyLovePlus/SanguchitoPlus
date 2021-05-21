@@ -24,7 +24,7 @@ def realizar_pedido(sandwiches: dict, ingredientes: dict) -> list:
     # construimos el sandwich a partir de las opciones disponibles y lo agregamos al pedido
     pedido.append(__construir_sandwich(sandwiches, ingredientes))
     
-    # condicion para completar el pedido
+    # condición para completar el pedido
     continuar = input("¿Desea realizar otro pedido? (s/n) --> ")
     if (continuar == "n"): 
       break
@@ -39,7 +39,7 @@ def __imprimir_sandwich(sandwich: dict) -> None:
     Argumento:
       sandwich: Diccionario con los datos del sandwich y la lista de ingredientes adicionales
   """
-  # impresion de tipo e ingredientes adicionales (INGREDIENTE_POR_DEFECTO en caso de que no haya ninguno)
+  # impresión de tipo e ingredientes adicionales (INGREDIENTE_POR_DEFECTO en caso de que no haya ninguno)
   print("-"*100)
   print(f'Usted ha seleccionado un sandwich {sandwich["tipo"]} con ', end="")
   if (not sandwich["ingredientes"]):
@@ -47,7 +47,7 @@ def __imprimir_sandwich(sandwich: dict) -> None:
   else:
     nombres = [ing["nombre"] for ing in sandwich["ingredientes"]]
     print(", ".join(nombres))
-  # impresion del precio del sandwich
+  # impresión del precio del sandwich
   precios_ingredientes = [ing["precio"] for ing in sandwich["ingredientes"]]
   print("Subtotal a pagar por un sandwich {}: {}".format(sandwich["tipo"], sum(precios_ingredientes) + sandwich["precio"]))
 
