@@ -1,10 +1,3 @@
-# ingredientes = {
-#   "t": {
-#     "precio" : 20,
-#     "nombre" : "tomate"
-#   }
-# }
-
 # cantidad de '*' o '-' a colocar en consola
 CANTIDAD_DE_RELLENO = 100
 
@@ -47,8 +40,10 @@ def agregar_ingredientes(ingredientes: dict) -> dict:
     salir = __terminar_operacion()
 
   print("*" * CANTIDAD_DE_RELLENO)
+
   #se retorna el diccionario de ingredientes con el/los ingrediente(s) agregados
   return ingredientes
+
 
 def eliminar_ingredientes(ingredientes: dict) -> dict:
 
@@ -133,11 +128,20 @@ def __validar_alias(ingredientes: dict) -> str :
   #se le pide un alias al usuario
   alias: str = input("Ingrese alias para el ingrediente: ")
 
-  #mientras el alias exista en el diccionario de ingredientes se le pide otro alias al usuario
-  while(__existe_alias(ingredientes, alias)):
+  #Ciclo para validar que el usuario ingrese un alias válido (que no existe en el diccionario de
+  #ingredientes y que no sea vacío)
+  while(True):
+    #se valida que el alias no exista en el diccionario de ingredientes
+    if (__existe_alias(ingredientes, alias)):
       alias = input("El alias ya se encuentra registrado, por favor ingrese otro: ")
+    #se valida que el alias no esté vacío
+    elif(len(alias) == 0):
+      alias = input("El alias no puede estar vacío, por favor ingrese un alias válido: ")
+    else:
+      break
 
   print()
+
   #se retorna el alias validado
   return alias
 
@@ -159,10 +163,18 @@ def __validar_nombre_ingrediente(ingredientes: dict) -> str:
 
   #mientras el nombre del ingrediente exista en el diccionario de ingredientes
   #se le pide otro nombre para el ingrediente al usuario
-  while(__existe_nombre_ingrediente(ingredientes, nombre_ingrediente)):
-    nombre_ingrediente= input("El nombre ya se encuentra registrado, por favor ingrese otro: ")
+  while(True):
+    #se valida que el nombre del ingrediente no exista en el diccionario de ingredientes
+    if(__existe_nombre_ingrediente(ingredientes, nombre_ingrediente)):
+      nombre_ingrediente= input("El nombre ya se encuentra registrado, por favor ingrese otro: ")
+    #se valida que el nombre del ingrediente no esté vacío
+    elif(len(nombre_ingrediente) == 0):
+      nombre_ingrediente = input("El nombre no puede estar vacío, por favor ingrese un nombre válido: ")
+    else:
+      break
 
   print()
+
   #se retorna el nombre del ingrediente validado
   return nombre_ingrediente
 
@@ -213,7 +225,7 @@ def __terminar_operacion() -> str:
   
   #mientras el usuario no ingrese una opción válida (s/n) se le pide otra vez la opción
   while(salir not in ("s", "n")):
-      salir = input("Opción inválida, por favor ingrese una opción válida (s/n): ")
+    salir = input("Opción inválida, por favor ingrese una opción válida (s/n): ")
 
   #se retorna la opción válida (s/n)
   return salir
@@ -247,6 +259,7 @@ def __ingrediente_eliminado(ingredientes: dict, alias: str) -> bool:
     __imprimir_ingrediente_eliminado()
   
   print()
+  
   #se retorna el diccionario de ingredientes modificado
   return ingredientes
 
@@ -283,6 +296,14 @@ def __imprimir_ingrediente_eliminado() -> None:
   print("-" * CANTIDAD_DE_RELLENO)
   print("Ingrediente eliminado exitosamente")
   print("-" * CANTIDAD_DE_RELLENO)
+
+
+# ingredientes = {
+#   "t": {
+#     "precio" : 20,
+#     "nombre" : "tomate"
+#   }
+# }
 
 #ingredientes = agregar_ingredientes(ingredientes)
 #print(ingredientes)
