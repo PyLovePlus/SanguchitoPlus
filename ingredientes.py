@@ -20,7 +20,7 @@ def agregar_ingredientes(ingredientes: dict) -> dict:
     print("*" * CANTIDAD_DE_RELLENO)
     print(format("Agregar Ingrediente(s)", ">60s"))
 
-    while (salir != "s"):
+    while salir != "s":
         print("*" * CANTIDAD_DE_RELLENO)
 
         # se validan que los atributos del ingrediente a crear sean validos
@@ -62,7 +62,7 @@ def eliminar_ingredientes(ingredientes: dict) -> dict:
     print("*" * CANTIDAD_DE_RELLENO)
     print(format("Eliminar Ingrediente(s)", ">60s"))
 
-    while (salir != "s"):
+    while salir != "s":
         print("*" * CANTIDAD_DE_RELLENO)
         alias = input("Ingrese alias del ingrediente a eliminar: ")
 
@@ -92,7 +92,7 @@ def __existe_nombre_ingrediente(ingredientes: dict, nombre_ingrediente: str) -> 
     # Ciclo que revisa el nombre de cada ingrediente comparándolo con nombre_ingrediente
     for ingrediente in ingredientes.keys():
         # Si nombre_ingrediente ya existe se retorna True
-        if (ingredientes[ingrediente]["nombre"] == nombre_ingrediente):
+        if ingredientes[ingrediente]["nombre"] == nombre_ingrediente:
             return True
 
     # Si nombre_ingrediente no existe se retorna False
@@ -127,12 +127,12 @@ def __validar_alias(ingredientes: dict) -> str:
 
     # Ciclo para validar que el usuario ingrese un alias válido (que no existe en el diccionario de
     # ingredientes y que no sea vacío)
-    while (True):
+    while True:
         # se valida que el alias no exista en el diccionario de ingredientes
-        if (__existe_alias(ingredientes, alias)):
+        if __existe_alias(ingredientes, alias):
             alias = input("El alias ya se encuentra registrado, por favor ingrese otro: ")
         # se valida que el alias no esté vacío
-        elif (len(alias) == 0):
+        elif len(alias) == 0:
             alias = input("El alias no puede estar vacío, por favor ingrese un alias válido: ")
         else:
             break
@@ -159,12 +159,12 @@ def __validar_nombre_ingrediente(ingredientes: dict) -> str:
 
     # mientras el nombre del ingrediente exista en el diccionario de ingredientes
     # se le pide otro nombre para el ingrediente al usuario
-    while (True):
+    while True:
         # se valida que el nombre del ingrediente no exista en el diccionario de ingredientes
-        if (__existe_nombre_ingrediente(ingredientes, nombre_ingrediente)):
+        if __existe_nombre_ingrediente(ingredientes, nombre_ingrediente):
             nombre_ingrediente = input("El nombre ya se encuentra registrado, por favor ingrese otro: ")
         # se valida que el nombre del ingrediente no esté vacío
-        elif (len(nombre_ingrediente) == 0):
+        elif len(nombre_ingrediente) == 0:
             nombre_ingrediente = input("El nombre no puede estar vacío, por favor ingrese un nombre válido: ")
         else:
             break
@@ -184,18 +184,18 @@ def __validar_precio() -> float:
     """
     # se le pide un precio para el ingrediente al usuario, validando que sea un float
     precio: float = 0
-    while (precio == 0):
+    while precio == 0:
         try:
-            precio: float = float(input(("Ingresa un precio para el ingrediente: ")))
+            precio: float = float(input("Ingresa un precio para el ingrediente: "))
         except:
             print("Error: El precio debe ser un número.")
             precio = 0
 
     # mientras el precio del ingrediente no sea válido, es decir, no sea mayor a 0.00
     # se le pide al usuario otro precio válido
-    while (precio <= 0):
+    while precio <= 0:
         print("El precio debe ser mayor a 0.00")
-        precio: float = float(input(("Ingresa un precio para el ingrediente: ")))
+        precio: float = float(input("Ingresa un precio para el ingrediente: "))
 
     # se redondea el precio a dos decimales
     precio = round(precio, 2)
@@ -218,14 +218,14 @@ def __terminar_operacion() -> str:
     salir: str = input('¿Desea salir? (s/n): ')
 
     # mientras el usuario no ingrese una opción válida (s/n) se le pide otra vez la opción
-    while (salir not in ("s", "n")):
+    while salir not in ("s", "n"):
         salir = input("Opción inválida, por favor ingrese una opción válida (s/n): ")
 
     # se retorna la opción válida (s/n)
     return salir
 
 
-def __ingrediente_eliminado(ingredientes: dict, alias: str) -> bool:
+def __ingrediente_eliminado(ingredientes: dict, alias: str) -> dict:
     # definición de __doc__
     """
       Función encargada de eliminar el ingrediente si existe el alias del ingrediente,
@@ -239,7 +239,7 @@ def __ingrediente_eliminado(ingredientes: dict, alias: str) -> bool:
     """
     # si el alias del ingrediente no existe en el diccionario de ingredientes se le indica
     # al usuario que el ingrediente con esa alias no existe mediante un mensaje en consola
-    if (not (__existe_alias(ingredientes, alias))):
+    if not (__existe_alias(ingredientes, alias)):
         print(f"El ingrediente con alias \"{alias}\" no existe")
     # si el alias del ingrediente si existe en el diccionario de ingredientes se elimina
     # el ingrediente del diccionario de ingredientes y se le indica al usuario que el ingrediente

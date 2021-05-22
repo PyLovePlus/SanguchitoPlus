@@ -17,7 +17,7 @@ def realizar_pedido(sandwiches: dict, ingredientes: dict) -> list:
     pedido: list = []
 
     # Ciclo para agregar sandwiches al pedido
-    while (True):
+    while True:
         print("*" * CANTIDAD_DE_RELLENO)
         print("Sandwich número {}\n".format(len(pedido) + 1))
 
@@ -26,7 +26,7 @@ def realizar_pedido(sandwiches: dict, ingredientes: dict) -> list:
 
         # condición para completar el pedido
         continuar = input("¿Desea realizar otro pedido? (s/n) --> ")
-        if (continuar == "n"):
+        if continuar == "n":
             break
 
     return pedido
@@ -40,9 +40,9 @@ def __imprimir_sandwich(sandwich: dict) -> None:
         sandwich: Diccionario con los datos del sandwich y la lista de ingredientes adicionales
     """
     # impresión de tipo e ingredientes adicionales (INGREDIENTE_POR_DEFECTO en caso de que no haya ninguno)
-    print("-"*100)
+    print("-" * 100)
     print(f'Usted ha seleccionado un sandwich {sandwich["tipo"]} con ', end="")
-    if (not sandwich["ingredientes"]):
+    if not sandwich["ingredientes"]:
         print(INGREDIENTE_POR_DEFECTO)
     else:
         nombres = [ing["nombre"] for ing in sandwich["ingredientes"]]
@@ -52,7 +52,7 @@ def __imprimir_sandwich(sandwich: dict) -> None:
     print("Subtotal a pagar por un sandwich {}: {}".format(sandwich["tipo"], sum(precios_ingredientes) + sandwich["precio"]))
 
 
-def __construir_sandwich (sandwiches: dict, ingredientes: dict) -> dict:
+def __construir_sandwich(sandwiches: dict, ingredientes: dict) -> dict:
     # definición de __doc__
     """
       Construye un sandwich a partir de una lista de opciones definida en sus argumentos.
@@ -79,7 +79,7 @@ def __construir_sandwich (sandwiches: dict, ingredientes: dict) -> dict:
         sandwich["alias"] = input("--> ")
 
         # en caso de tipo invalido
-        if (sandwich["alias"]  not in sandwiches.keys()):
+        if sandwich["alias"] not in sandwiches.keys():
             print("Error: ¡Debe seleccionar un tipo valido!")
             continue
 
@@ -115,18 +115,18 @@ def __agregar_ingredientes(ingredientes: dict) -> list:
 
     # mientras el usuario siga agregando ingredientes
     alias: str
-    while(True):
+    while True:
         alias = input("Indique un ingrediente (enter para terminar) --> ")
 
         # si no hay ingrediente seleccionado (enter)
-        if (not alias):
+        if not alias:
             break
         # si el ingrediente no existe
-        elif (not alias in ingredientes.keys()):
+        elif not alias in ingredientes.keys():
             print("Error: ¡Este ingrediente no existe!")
             continue
         # si el ingrediente ya fue agregado
-        elif (alias in [ing["alias"] for ing in solicitados]):
+        elif alias in [ing["alias"] for ing in solicitados]:
             print("Error: ¡Este ingrediente ya fue agregado!")
             continue
 
@@ -138,7 +138,6 @@ def __agregar_ingredientes(ingredientes: dict) -> list:
         })
 
     return solicitados
-
 
 # sandwiches = {
 #   "t": {
