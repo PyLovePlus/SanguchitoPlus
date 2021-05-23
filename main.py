@@ -88,11 +88,8 @@ def menu_principal() -> None:
 
 		# realizar pedido
 		elif opcion_menu == "1":
-			# Invocador de pedidos
-			pedido_temporal: list = mod_pedido.realizar_pedido(sandwiches_tamano, ingredientes_adicionales)
-			# Agregamos pedido al histórico
-			historico_pedidos.extend(pedido_temporal)
-			# Impresión de factura
+			# Invocador de gestion de pedidos
+			submenu_pedidos(sandwiches_tamano, ingredientes_adicionales, historico_pedidos)
 			pass
 
 		# gestionar ingredientes (agregar o eliminar)
@@ -103,6 +100,22 @@ def menu_principal() -> None:
 		elif opcion_menu == "3":
 			# Invocador de estadísticas
 			pass
+
+
+def submenu_pedidos(sandwiches_tamano: dict, ingredientes_adicionales: dict, historico_pedidos: list):
+	# definición de __doc__
+	"""
+		Punto de partida para realizar un pedido
+		Se invoca la gestión de pedido
+		Luego la impresión de la factura
+	"""
+	# Invocador de gestion de pedidos
+	pedido_temporal: list = mod_pedido.realizar_pedido(sandwiches_tamano, ingredientes_adicionales)
+
+	# Agregamos pedido al histórico
+	historico_pedidos.extend(pedido_temporal)
+
+	# Impresión de factura
 
 
 def submenu_gestion_ingredientes(ingredientes_adicionales: dict) -> dict:
@@ -148,6 +161,5 @@ def submenu_gestion_ingredientes(ingredientes_adicionales: dict) -> dict:
 
 # Punto de entrada del proyecto
 if __name__ == "__main__":
-	print("Ejecutando desde consola")
 	menu_principal()
 
