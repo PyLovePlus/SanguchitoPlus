@@ -1,6 +1,7 @@
 # Import módulos
 import pedido as mod_pedido
 import ingredientes as mod_ingredientes
+import impresora_fiscal as mod_impresora
 
 # Cantidad de "*" a rellenar en consola
 CANTIDAD_DE_RELLENO = 100
@@ -114,8 +115,9 @@ def submenu_pedidos(sandwiches_tamano: dict, ingredientes_adicionales: dict, his
 
 	# Agregamos pedido al histórico
 	historico_pedidos.extend(pedido_temporal)
-
+	
 	# Impresión de factura
+	mod_impresora.imprimir_factura(pedido_temporal)
 
 
 def submenu_gestion_ingredientes(ingredientes_adicionales: dict) -> dict:
