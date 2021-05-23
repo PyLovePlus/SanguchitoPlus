@@ -25,11 +25,15 @@ def realizar_pedido(sandwiches: dict, ingredientes: dict) -> list:
         pedido.append(__construir_sandwich(sandwiches, ingredientes))
 
         # condición para completar el pedido
-        continuar = input("¿Desea realizar otro pedido? (s/n) --> ")
-        if continuar == "n":
-            break
-
-    return pedido
+        continuar: str = ""
+        while not continuar in ["n", "s"]:
+            continuar = input("¿Desea realizar otro pedido? (s/n) --> ")
+            if continuar == "n":
+                return pedido
+            elif continuar != "s":
+                print("Error: ¡Las opciones validas son s/n!")
+            else:
+                break
 
 
 def __imprimir_sandwich(sandwich: dict) -> None:
