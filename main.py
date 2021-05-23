@@ -1,7 +1,9 @@
 # Import módulos
 import pedido as mod_pedido
 import ingredientes as mod_ingredientes
+import estadisticas as mod_estadisticas
 import impresora_fiscal as mod_impresora
+
 
 # Cantidad de "*" a rellenar en consola
 CANTIDAD_DE_RELLENO = 100
@@ -100,7 +102,7 @@ def menu_principal() -> None:
 
 		elif opcion_menu == "3":
 			# Invocador de estadísticas
-			pass
+			submenu_estadisticas(historico_pedidos)
 
 
 def submenu_pedidos(sandwiches_tamano: dict, ingredientes_adicionales: dict, historico_pedidos: list):
@@ -115,7 +117,7 @@ def submenu_pedidos(sandwiches_tamano: dict, ingredientes_adicionales: dict, his
 
 	# Agregamos pedido al histórico
 	historico_pedidos.extend(pedido_temporal)
-	
+
 	# Impresión de factura
 	mod_impresora.imprimir_factura(pedido_temporal)
 
@@ -160,6 +162,48 @@ def submenu_gestion_ingredientes(ingredientes_adicionales: dict) -> dict:
 	
 	return ingredientes_adicionales
 
+
+def submenu_estadisticas(historico_pedidos: list):
+	# definición de __doc__
+	"""
+		Punto de partida para ver estadisticas
+		1- Cant de sandwich por tipo
+		2- Ventas por ingredientes 
+		Argumentos
+			Historico de pedidos
+	"""
+	
+	#submenu de estadisticas
+	submenu_opcion: str = "s"
+	while True:
+		print()
+		print("*" * CANTIDAD_DE_RELLENO)
+		print("\t\t 1- Cantidad de Sandwiches por tipo")
+		print("\t\t 2- Ventas por ingredientes" )
+		print("\t\t s- Volver a menú principal")
+
+		# opción invalida
+		if submenu_opcion not in ("1", "2", "s", "S"):
+			print("Opción inválida, por favor ingrese una opción válida!")
+
+		# input de opción
+		submenu_opcion = input("Ingrese la opción que desee: ")
+		
+		if submenu_opcion in ("s", "S"):
+			# Salir
+			break
+		elif submenu_opcion == "1":
+			# 1- Cant de sandwich por tipo
+			mod_estadisticas.tipo_vendidos(historico_pedidos)
+			print()
+			input("(Presiones enter para continuar)")
+		
+		elif submenu_opcion == "2":
+			# 2- Ventas por ingredientes
+			mod_estadisticas.ing_mas_vendidos(historico_pedidos)
+			print()
+			input("(Presiones enter para continuar)")
+			
 
 # Punto de entrada del proyecto
 if __name__ == "__main__":
