@@ -71,8 +71,8 @@ def menu_principal() -> None:
 	opcion_menu: str = "s"
 	while True:
 		print("*" * CANTIDAD_DE_RELLENO)
-		print("¡Bienvenido a Sanguchito+!")
-		print()
+		print(format("¡Bienvenido a Sanguchito+!", ">60s"))
+		print("*" * CANTIDAD_DE_RELLENO)
 		print("\t 1- Realizar pedido")
 		print("\t 2- Gestionar ingredientes")
 		print("\t 3- Ver estadísticas de ventas")
@@ -83,7 +83,7 @@ def menu_principal() -> None:
 			print("Opción inválida, por favor ingrese una opción válida!")
 
 		# se solicita la opción
-		opcion_menu = input("Ingrese número de opción: ")
+		opcion_menu = input("Ingrese número de opción --> ")
 
 		# salir
 		if opcion_menu == "s":
@@ -91,7 +91,7 @@ def menu_principal() -> None:
 
 		# realizar pedido
 		elif opcion_menu == "1":
-			# Invocador de gestion de pedidos
+			# Invocador de gestión de pedidos
 			submenu_pedidos(sandwiches_tamano, ingredientes_adicionales, historico_pedidos)
 			pass
 
@@ -112,7 +112,7 @@ def submenu_pedidos(sandwiches_tamano: dict, ingredientes_adicionales: dict, his
 		Se invoca la gestión de pedido
 		Luego la impresión de la factura
 	"""
-	# Invocador de gestion de pedidos
+	# Invocador de gestión de pedidos
 	pedido_temporal: list = mod_pedido.realizar_pedido(sandwiches_tamano, ingredientes_adicionales)
 
 	# Agregamos pedido al histórico
@@ -133,10 +133,12 @@ def submenu_gestion_ingredientes(ingredientes_adicionales: dict) -> dict:
 	# submenu de gestión de ingredientes
 	opcion_submenu: str = "s"
 	while True:
-		print()
-		print("\t\t A- Agregar ingredientes")
-		print("\t\t E- Eliminar ingredientes")
-		print("\t\t s- Volver a menú principal")
+		print("*" * CANTIDAD_DE_RELLENO)
+		print(format("Gestión de Ingredientes", ">60s"))
+		print("*" * CANTIDAD_DE_RELLENO)
+		print("\t A- Agregar ingredientes")
+		print("\t E- Eliminar ingredientes")
+		print("\t s- Volver a menú principal")
 		print()
 		
 		# opción invalida
@@ -144,7 +146,7 @@ def submenu_gestion_ingredientes(ingredientes_adicionales: dict) -> dict:
 			print("Opción inválida, por favor ingrese una opción válida!")
 
 		# input de opción
-		opcion_submenu = input("Ingrese la opción que desee: ")
+		opcion_submenu = input("Ingrese la opción que desee --> ")
 
 		# si la opción es agregar
 		if opcion_submenu in ("A", "a"):
@@ -166,28 +168,30 @@ def submenu_gestion_ingredientes(ingredientes_adicionales: dict) -> dict:
 def submenu_estadisticas(historico_pedidos: list):
 	# definición de __doc__
 	"""
-		Punto de partida para ver estadisticas
+		Punto de partida para ver estadísticas
 		1- Cant de sandwich por tipo
 		2- Ventas por ingredientes 
 		Argumentos
-			Historico de pedidos
+			Histórico de pedidos
 	"""
 	
-	#submenu de estadisticas
+	#submenu de estadísticas
 	submenu_opcion: str = "s"
 	while True:
-		print()
 		print("*" * CANTIDAD_DE_RELLENO)
-		print("\t\t 1- Cantidad de Sandwiches por tipo")
-		print("\t\t 2- Ventas por ingredientes" )
-		print("\t\t s- Volver a menú principal")
+		print(format("Estadísticas", ">52s"))
+		print("*" * CANTIDAD_DE_RELLENO)
+		print("\t 1- Cantidad de Sandwiches por tipo")
+		print("\t 2- Ventas por ingredientes" )
+		print("\t s- Volver a menú principal")
+		print()
 
 		# opción invalida
 		if submenu_opcion not in ("1", "2", "s", "S"):
 			print("Opción inválida, por favor ingrese una opción válida!")
 
 		# input de opción
-		submenu_opcion = input("Ingrese la opción que desee: ")
+		submenu_opcion = input("Ingrese estadística a visualizar --> ")
 		
 		if submenu_opcion in ("s", "S"):
 			# Salir
@@ -196,13 +200,13 @@ def submenu_estadisticas(historico_pedidos: list):
 			# 1- Cant de sandwich por tipo
 			mod_estadisticas.tipo_vendidos(historico_pedidos)
 			print()
-			input("(Presiones enter para continuar)")
+			input("Presiona enter para continuar...")
 		
 		elif submenu_opcion == "2":
 			# 2- Ventas por ingredientes
 			mod_estadisticas.ing_mas_vendidos(historico_pedidos)
 			print()
-			input("(Presiones enter para continuar)")
+			input("Presiona enter para continuar...")
 			
 
 # Punto de entrada del proyecto

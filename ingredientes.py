@@ -64,7 +64,7 @@ def eliminar_ingredientes(ingredientes: dict) -> dict:
 
     while salir != "s":
         print("*" * CANTIDAD_DE_RELLENO)
-        alias = input("Ingrese alias del ingrediente a eliminar: ")
+        alias = input("Ingrese alias del ingrediente a eliminar --> ")
 
         # se elimina el ingrediente del diccionario de ingredientes en caso de que exista
         ingredientes = __ingrediente_eliminado(ingredientes, alias)
@@ -123,7 +123,7 @@ def __validar_alias(ingredientes: dict) -> str:
     """
 
     # se le pide un alias al usuario
-    alias: str = input("Ingrese alias para el ingrediente: ")
+    alias: str = input("Ingrese alias para el ingrediente --> ")
 
     # Ciclo para validar que el usuario ingrese un alias válido (que no existe en el diccionario de
     # ingredientes y que no sea vacío)
@@ -136,8 +136,6 @@ def __validar_alias(ingredientes: dict) -> str:
             alias = input("El alias no puede estar vacío, por favor ingrese un alias válido: ")
         else:
             break
-
-    print()
 
     # se retorna el alias validado
     return alias
@@ -155,7 +153,7 @@ def __validar_nombre_ingrediente(ingredientes: dict) -> str:
     """
 
     # se le pide un nombre de ingrediente al usuario
-    nombre_ingrediente: str = input("Ingrese nombre para el ingrediente: ")
+    nombre_ingrediente: str = input("Ingrese nombre para el ingrediente --> ")
 
     # mientras el nombre del ingrediente exista en el diccionario de ingredientes
     # se le pide otro nombre para el ingrediente al usuario
@@ -168,8 +166,6 @@ def __validar_nombre_ingrediente(ingredientes: dict) -> str:
             nombre_ingrediente = input("El nombre no puede estar vacío, por favor ingrese un nombre válido: ")
         else:
             break
-
-    print()
 
     # se retorna el nombre del ingrediente validado
     return nombre_ingrediente
@@ -186,7 +182,7 @@ def __validar_precio() -> float:
     precio: float = 0
     while precio == 0:
         try:
-            precio: float = float(input("Ingresa un precio para el ingrediente: "))
+            precio: float = float(input("Ingresa un precio para el ingrediente --> "))
         except:
             print("Error: El precio debe ser un número.")
             precio = 0
@@ -195,12 +191,10 @@ def __validar_precio() -> float:
     # se le pide al usuario otro precio válido
     while precio <= 0:
         print("El precio debe ser mayor a 0.00")
-        precio: float = float(input("Ingresa un precio para el ingrediente: "))
+        precio: float = float(input("Ingresa un precio para el ingrediente --> "))
 
     # se redondea el precio a dos decimales
     precio = round(precio, 2)
-
-    print()
 
     # se retorna un precio válido
     return precio
@@ -215,11 +209,11 @@ def __terminar_operacion() -> str:
     """
 
     # se pide la opción al usuario
-    salir: str = input('¿Desea salir? (s/n): ')
+    salir: str = input('¿Desea salir? (s/n) --> ')
 
     # mientras el usuario no ingrese una opción válida (s/n) se le pide otra vez la opción
     while salir not in ("s", "n"):
-        salir = input("Opción inválida, por favor ingrese una opción válida (s/n): ")
+        salir = input("Opción inválida, por favor ingrese una opción válida (s/n) --> ")
 
     # se retorna la opción válida (s/n)
     return salir
@@ -271,9 +265,9 @@ def __imprimir_ingrediente_agregado(alias: str, nombre_ingrediente: str, precio:
     # Se imprime la información (alias, nombre_ingrediente y precio) del nuevo ingrediente agregado
     print("-" * CANTIDAD_DE_RELLENO)
     print("Ingrediente agregado exitosamente: ")
-    print(f"Alias --> {alias}")
-    print(f"Nombre --> {nombre_ingrediente}")
-    print(f"Precio --> {precio}")
+    print(f"Alias: {alias}")
+    print(f"Nombre: {nombre_ingrediente}")
+    print(f"Precio: {precio}")
     print("-" * CANTIDAD_DE_RELLENO)
 
 

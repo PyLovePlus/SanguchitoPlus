@@ -18,7 +18,7 @@ def tipo_vendidos (hist_pedidos: list):
 	print("La cantidad de 'sanguchitos' de tipo doble vendidos son: ", dob)
 	print("La cantidad de 'sanguchitos' de tipo triple vendidos son: ", tri)
 
-#Estadisticas de ventas - Ventas por ingredientes ordenados de mayor a menor
+#Estadísticas de ventas - Ventas por ingredientes ordenados de mayor a menor
 
 def ing_mas_vendidos (hist_pedidos: list):
 	i = j = k = jam = cha = pim = dqs = ace = ppe = sal = 0
@@ -43,7 +43,7 @@ def ing_mas_vendidos (hist_pedidos: list):
 
 	#Ordenar los contadores de ingredientes
 	list_aux = []
-	#list_aux.append(jam, cha, pim, dqs, ace, ppe, sal)
+
 	list_aux.append([jam, "Jamón"], [cha, "Champiñones"], [pim, "Pimentón"], [dqs, "Doble Queso"], [ace, "Aceituna"], [ppe, "Pepperoni"], [sal, "Salchichón"])
 	list_aux.sort()
 	print("Los 3 ingredientes más vendidos fueron los siguientes:")

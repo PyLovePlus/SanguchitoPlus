@@ -36,7 +36,7 @@ def imprimir_factura (pedido_realizado: list):
 	print(f"Total a pagar: {total_pagar}".rjust(50).center(CANTIDAD_DE_RELLENO))
 
 	# Input para espera
-	input()
+	input("\nPresiona enter para continuar...")
 
 
 def __detalle_sandwich (pedido_sandwich: dict) -> float:
@@ -46,7 +46,7 @@ def __detalle_sandwich (pedido_sandwich: dict) -> float:
 		Argumento
 			Un sandwich con su ingredientes
 	"""
-	subtotal_sandwhich: float = 0.0
+	subtotal_sandwich: float = 0.0
 
 
 	# Linea detalle Sandwich
@@ -55,18 +55,18 @@ def __detalle_sandwich (pedido_sandwich: dict) -> float:
 		.center(CANTIDAD_DE_RELLENO)
 	print(linea_sandwich)
 
-	subtotal_sandwhich += pedido_sandwich['precio']
+	subtotal_sandwich += pedido_sandwich['precio']
 
 	# Detalle por ingrediente
 	for ing in pedido_sandwich["ingredientes"]:
-		subtotal_sandwhich += ing['precio']
+		subtotal_sandwich += ing['precio']
 		linea_ing = (
 			f"\t  {ing['nombre']}".ljust(CANTIDAD_DE_RELLENO//4) + f"{float(ing['precio'])}    \t".format("%10.2f").rjust(CANTIDAD_DE_RELLENO // 4)
 		).center(CANTIDAD_DE_RELLENO)
 		print(linea_ing)
 
 	# Imprimir subtotal
-	print(f" {subtotal_sandwhich}".format("%10.2f").rjust(50, "-").center(CANTIDAD_DE_RELLENO))
+	print(f" {subtotal_sandwich}".format("%10.2f").rjust(50, "-").center(CANTIDAD_DE_RELLENO))
 	print()
 
-	return subtotal_sandwhich
+	return subtotal_sandwich

@@ -16,6 +16,8 @@ def realizar_pedido(sandwiches: dict, ingredientes: dict) -> list:
     # lista de sandwiches a ser pedidos
     pedido: list = []
 
+    print("*" * CANTIDAD_DE_RELLENO)
+    print(format("Realizar pedido", ">60s"))
     # Ciclo para agregar sandwiches al pedido
     while True:
         print("*" * CANTIDAD_DE_RELLENO)
@@ -27,6 +29,7 @@ def realizar_pedido(sandwiches: dict, ingredientes: dict) -> list:
         # condición para completar el pedido
         continuar: str = ""
         while not continuar in ["n", "s"]:
+            print()
             continuar = input("¿Desea realizar otro pedido? (s/n) --> ")
             if continuar == "n":
                 return pedido
