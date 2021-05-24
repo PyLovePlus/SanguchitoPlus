@@ -1,7 +1,7 @@
 #Estadísticas de ventas - Cant de sandwich por tipo vendido y cant total
 
 def tipo_vendidos (hist_pedidos: list):
-	i, j, ind, dob, tri, total = 0
+	i = j = ind = dob = tri = total = 0
 
 	for i in range(0, len(hist_pedidos)):
 		for j in range(0, len(hist_pedidos[i])):
@@ -21,7 +21,7 @@ def tipo_vendidos (hist_pedidos: list):
 #Estadisticas de ventas - Ventas por ingredientes ordenados de mayor a menor
 
 def ing_mas_vendidos (hist_pedidos: list):
-	i, j, k, jam, cha, pim, dqs, ace, ppe, sal = 0
+	i = j = k = jam = cha = pim = dqs = ace = ppe = sal = 0
 
 	for i in range(0, len(hist_pedidos)):
 		for j in range(0, len(hist_pedidos[i])):
