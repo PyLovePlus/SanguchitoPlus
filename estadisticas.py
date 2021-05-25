@@ -1,5 +1,7 @@
 #Estadísticas de ventas - Cant de sandwich por tipo vendido y cant total
 
+from pprint import *
+
 def tipo_vendidos (hist_pedidos: list):
 	i = j = ind = dob = tri = total = 0
 
@@ -12,50 +14,46 @@ def tipo_vendidos (hist_pedidos: list):
 			tri += 1
 
 	total = ind + dob + tri
-	print("La cantidad total de 'sanguchitos' vendidos son: ", total)
-	print("La cantidad de 'sanguchitos' de tipo individual vendidos son: ", ind)
-	print("La cantidad de 'sanguchitos' de tipo doble vendidos son: ", dob)
-	print("La cantidad de 'sanguchitos' de tipo triple vendidos son: ", tri)
+	print("\tLa cantidad total de 'sanguchitos' vendidos son: ", total)
+	print("\tLa cantidad de 'sanguchitos' de tipo individual vendidos son: ", ind)
+	print("\tLa cantidad de 'sanguchitos' de tipo doble vendidos son: ", dob)
+	print("\tLa cantidad de 'sanguchitos' de tipo triple vendidos son: ", tri)
 
 
-#Estadísticas de ventas - Ventas por ingredientes ordenados de mayor a menor
-def ing_mas_vendidos (hist_pedidos: list):
-	i = j = k = jam = cha = pim = dqs = ace = ppe = sal = 0
-
-	for i in range(0, len(hist_pedidos)):
-		for j in range(0, len(hist_pedidos[i]['ingredientes'])):
-
-			if hist_pedidos[i]['ingredientes'][j]['alias'] == 'ja':
-				jam += 1
-			elif hist_pedidos[i]['ingredientes'][j]['alias'] == 'ch':
-				cha += 1
-			elif hist_pedidos[i]['ingredientes'][j]['alias'] == 'pi':
-				pim += 1
-			elif hist_pedidos[i]['ingredientes'][j]['alias'] == 'dq':
-				dqs += 1
-			elif hist_pedidos[i]['ingredientes'][j]['alias'] == 'ac':
-				ace += 1
-			elif hist_pedidos[i]['ingredientes'][j]['alias'] == 'pp':
-				ppe += 1
-			else:
-				sal += 1
-
-	#Ordenar los contadores de ingredientes
-	list_aux = []
-
-	list_aux.extend([[jam, "Jamón"], [cha, "Champiñones"], [pim, "Pimentón"], [dqs, "Doble Queso"], [ace, "Aceituna"], [ppe, "Pepperoni"], [sal, "Salchichón"]])
-	list_aux = sorted(list_aux, key = __ordernar_ingredientes, reverse=True)
-	print()
-	print("Los 3 ingredientes más vendidos fueron los siguientes:")
-	for i in range(0, 3):
-		print(i + 1, "-. ", list_aux[i][1], ": ", list_aux[i][0], " unidades")
-
-
-def __ordernar_ingredientes (ingrediente : list) -> int:
+def imprimir_ingredientes_vendidos (ing_vendidos: dict):
 	# definición de __doc__
 	"""
-		Encargado de devolver cantidad de ingredientes utilizados como clave de ordernamiento
-		Argumentos
-			Elemento ingrediente
+		Función que imprime en pantalla los ingredientes mas vendidos de manera ordenada
+		Argumento:
+			ing_vendidos: Diccionario de ingredientes vendidos que contiene nombre y cantidad
 	"""
-	return ingrediente[0]
+	# ordenar diccionario
+	ing_vendidos = sorted(ing_vendidos.values(), key=lambda ing: ing["cantidad"], reverse=True)
+
+	for ingrediente in ing_vendidos:
+		print("\t{}: {}".format(ingrediente["nombre"], ingrediente["cantidad"]))
+
+def ing_vendidos (hist_pedidos: list):
+	# definición de __doc__
+	"""
+		Función que genera un diccionario con los ingredientes vendidos y luego
+		los imprime en pantalla ordenados.
+		Argumento:
+			hist_pedidos: lista de pedidos del sistema
+	"""
+	ing_vendidos: dict = {}
+	for pedido in hist_pedidos:
+		for ingrediente in pedido["ingredientes"]:
+			if not ing_vendidos.get(ingrediente["alias"]):
+				ing_vendidos[ingrediente["alias"]] = {
+					"nombre": ingrediente["nombre"],
+					"cantidad": 1
+				}
+			else:
+				ing_vendidos[ingrediente["alias"]]["cantidad"] += 1
+				
+	imprimir_ingredientes_vendidos(ing_vendidos)
+	
+
+
+

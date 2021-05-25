@@ -204,7 +204,7 @@ def submenu_estadisticas(historico_pedidos: list):
 		
 		elif submenu_opcion == "2":
 			# 2- Ventas por ingredientes
-			mod_estadisticas.ing_mas_vendidos(historico_pedidos)
+			mod_estadisticas.ing_vendidos(historico_pedidos)
 			print()
 			input("Presiona enter para continuar...")
 			
