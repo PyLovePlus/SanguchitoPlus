@@ -30,8 +30,11 @@ def imprimir_ingredientes_vendidos (ing_vendidos: dict):
 	# ordenar diccionario
 	ing_vendidos = sorted(ing_vendidos.values(), key=lambda ing: ing["cantidad"], reverse=True)
 
-	for ingrediente in ing_vendidos:
-		print("\t{}: {}".format(ingrediente["nombre"], ingrediente["cantidad"]))
+	if len(ing_vendidos) > 0:
+		for ingrediente in ing_vendidos:
+			print("\t{}: {}".format(ingrediente["nombre"], ingrediente["cantidad"]))
+	else:
+		print("¡No se ha realizado ventas!")
 
 def ing_vendidos (hist_pedidos: list):
 	# definición de __doc__
